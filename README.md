@@ -1,38 +1,26 @@
-# Implementation of Sentimental Analysis
-The process of sentiment analysis using VADER model can be described as follows:
-
-Read the input text: The first step is to read the input text. This can be done using a variety of methods, such as reading a file, receiving input from a user, or scraping text from a website.
-Clean the text: Once the text has been read, it is important to clean it. This involves removing any punctuation, stop words, or other noise that could interfere with the sentiment analysis process.
-Calculate the sentiment scores: The next step is to calculate the sentiment scores for the text. This is done by using a sentiment analysis model, such as VADER.
-Interpret the results: The final step is to interpret the results of the sentiment analysis. This involves understanding the meaning of the sentiment scores and how they relate to the text.
-VADER is a lexicon- and rule-based sentiment analysis tool that is specifically designed to work with social media text. It is a free and open-source tool that can be used to analyze text in a variety of languages. VADER is a popular choice for sentiment analysis because it is easy to use and produces accurate results.
+# Implementation-of-Sentimental-Analysis
+Sentiment analysis is used to detect or recognize the sentiment which is contained in the text. This analysis helps us to get the reference of our text which means we can understand that the content is positive, negative, or neutral. Sentiment analysis, also referred to as opinion mining, is an approach to natural language processing (NLP) that identifies the emotional tone behind a body of text. This is a popular way for organizations to determine and categorize opinions about a product, service or idea. Sentiment Analysis is a use case of Natural Language Processing (NLP) and comes under the category of text classification. To put it simply, Sentiment Analysis involves classifying a text into various sentiments, such as positive or negative, Happy, Sad or Neutral, etc.
 
 ## Program:
-'''
-import pandas as pd
-import vaderSentiment as vs
+```
+# Reg.no: 212220230015
+# Name: DurgaDevi P
 
-# Read the Excel file
-df = pd.read_excel('output.xlsx')
+import nltk
+from nltk.sentiment import SentimentIntensityAnalyzer
 
-# Create a VADERSentiment object
-analyzer = vs.vaderSentiment.SentimentIntensityAnalyzer()
+nltk.download('vader_lexicon')
 
-# Calculate the sentiment scores for each text
-sentiment_scores = []
-for text in df['Text']:
-    sentiment_scores.append(analyzer.polarity_scores(text))
+sia = SentimentIntensityAnalyzer()
 
-# Create a list of the texts
-texts = list(df['Text'])
+text = input("Enter a sentence to analyze: ")
 
-# Display the sentiment scores for each text
-for text, sentiment_score in zip(texts, sentiment_scores):
-    print("\n\nText:", text)
-    print("Positive:", sentiment_score['pos'])
-    print("Negative:", sentiment_score['neg'])
-    print("Neutral:", sentiment_score['neu'])
-    print("Compound:", sentiment_score['compound'])
-'''
+scores = sia.polarity_scores(text)
 
-Output
+print("Positive score:", scores['pos'])
+print("Negative score:", scores['neg'])
+print("Neutral score:", scores['neu'])
+print("Compound score:", scores['compound'])
+```
+## Output:
+![278951044-eb5d65b1-309d-41c2-ab01-c003196577f9](https://github.com/durga46/Implementation-of-Sentimental-Analysis/assets/75235704/7713d0c6-ec3c-45ef-9de6-730f963dc3e3)
